@@ -2,15 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Tasks = require("../Models/taskmodel");
 
-router.get("/", (req, res) => {
-  res.send("");
+router.get("/", async (req, res) => {
+  try {
+    const tasks = await Tasks.find({}).populate("Users");
+    res.json(tasks);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.post("/", async (req, res) => {
+router.post("/newtask", async (req, res) => {
   const task = new Tasks({
     taskname: req.body.taskname,
-    createdOn: req.body.createdOn,
-    finished: req.body.finished,
+    assignedTo: req.body.assignedTo,
   });
   newtask = await task.save();
   res.json(task);

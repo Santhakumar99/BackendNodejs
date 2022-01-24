@@ -6,15 +6,22 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 6400;
 const path = require("path");
+const upload = require("express-fileupload");
+const jwt = require("jsonwebtoken");
 //Middlewares
 const connectDb = require("./Config/Databaseconnecton");
 connectDb();
 
 const PostRoute = require("./Routes/Posts");
-
+const UserRoute = require("./Routes/Users");
+const TaskRoute = require("./Routes/Task");
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/position", PostRoute);
+app.use("/users", UserRoute);
+app.use("/tasks", TaskRoute);
+app.use("/projects", require("./Routes/Projects/project.routes"));
+app.use(upload());
 // app.use(cors());
 // app.enableCors();
 //Routes

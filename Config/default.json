@@ -1,5 +1,10 @@
 {
-  "apis_base_url": "http://localhost:4000/",
+  "apis_base_url": "http://localhost:6400/",
   "mongoURI": "mongodb+srv://santhakumar:Santha@cluster0.frto8.mongodb.net/test?authSource=admin&replicaSet=atlas-slfoei-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
-  "jwt_secret": "secret-key-change-it-later"
+  "jwt_secret": "secret-key-change-it-later",
+
+  "files": {
+    "projects": "uploads/projects",
+    "temp": "uploads/temp/"
+  }
 }
